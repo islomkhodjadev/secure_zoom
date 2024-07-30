@@ -4,6 +4,9 @@ plugins {
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
+    
+    
+    
 }
 
 def localProperties = new Properties()
@@ -30,6 +33,7 @@ android {
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
+        
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -39,7 +43,7 @@ android {
         applicationId = "com.example.zoom"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion = 23
+        minSdkVersion = 24
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName

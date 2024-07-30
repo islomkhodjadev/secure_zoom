@@ -4,6 +4,7 @@ import 'package:zoom/resources/auth_methods.dart';
 import 'package:zoom/screens/home_screen.dart';
 import 'package:zoom/screens/login_screen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:zoom/screens/video_call_screen.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark(useMaterial3: true),
         routes: {
           "/login": (context) => const LoginScreen(),
-          "/home": (context) => HomeScreen()
+          "/home": (context) => const HomeScreen(),
+          "/video-call": (context) => const VideoCallScreen()
         },
         home: StreamBuilder(
           stream: AuthMethods().authChanges,
