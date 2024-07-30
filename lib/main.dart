@@ -37,10 +37,10 @@ class MyApp extends StatelessWidget {
           stream: AuthMethods().authChanges,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: const CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
             if (snapshot.hasData) {
-              return HomeScreen();
+              return const HomeScreen();
             }
             return const LoginScreen();
           },

@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:zoom/widgets/home_meeting_button.dart";
+import "package:zoom/resources/firestore_methods.dart";
 
 class HistoryMeetingScreen extends StatelessWidget {
   const HistoryMeetingScreen({
@@ -8,33 +8,19 @@ class HistoryMeetingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          HomeMeetingButton(
-              onpressed: () {}, icon: Icons.videocam, text: "New Meeting"),
-          HomeMeetingButton(
-              onpressed: () {},
-              icon: Icons.add_box_rounded,
-              text: "Join Meeting"),
-          HomeMeetingButton(
-              onpressed: () {},
-              icon: Icons.calendar_today,
-              text: "Schedule meeting"),
-          HomeMeetingButton(
-              onpressed: () {},
-              icon: Icons.arrow_upward_rounded,
-              text: "Share screen")
-        ],
-      ),
-      const Expanded(
-          child: Center(
-        child: Text(
-          "Create/Join Meetings with just a click!",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
-        ),
-      ))
-    ]);
+    return StreamBuilder(
+        stream: FirestoreMethods().meetingHistory,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return ListView.builder(
+              itemCount: (snapshot.data! as dynamic).docs.length,
+              itemBuilder: (context, index) => ListTile(
+                  title: Text(
+                      "Room Name: ${(snapshot.data! as dynamic).docs[index]["meetingName"]}")));
+        });
   }
 }

@@ -3,9 +3,10 @@ import "package:zoom/utils/colors.dart";
 
 class HomeMeetingButton extends StatelessWidget {
   final VoidCallback onpressed;
-  IconData icon;
-  String text;
-  HomeMeetingButton(
+  final IconData icon;
+  final String text;
+
+  const HomeMeetingButton(
       {super.key,
       required this.onpressed,
       required this.icon,
