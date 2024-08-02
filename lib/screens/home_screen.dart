@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
+import "package:zoom/resources/auth_methods.dart";
 import "package:zoom/screens/history_meeting_screen.dart";
 import "package:zoom/screens/meeting_screen.dart";
 import "package:zoom/utils/colors.dart";
+import "package:zoom/widgets/custom_button.dart";
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const HistoryMeetingScreen(),
     const Text("Contacts"),
     const Text("Meet & chat"),
-    const Text("Settings"),
+    CustomButton(text: "Log out", onPressed: () => AuthMethods().signOut())
   ];
   @override
   Widget build(BuildContext context) {
