@@ -12,7 +12,8 @@ class MeetingScreen extends StatelessWidget {
 
   createNewMeeting() async {
     var random = Random();
-    String roomname = (random.nextInt(10000000) + 10000000).toString();
+    String roomname =
+        '${DateTime.now().millisecondsSinceEpoch}${random.nextInt(100000)}';
     _jitsiMeetMethods.createMeeting(
         roomname: roomname, isAudioMuted: true, isVideoMuted: true);
   }

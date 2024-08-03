@@ -20,6 +20,20 @@ class JitsiMeetMethods {
       isVideoMuted: isVideoMuted,
       userDisplayName: userName,
       userEmail: _authmethods.user.email,
+      serverUrl: "https://jitsi1.geeksec.de",
+      featureFlags: {
+        'prejoinPageEnabled': false, // Disable pre-join page
+        'inviteEnabled': false, // Disable the invite button
+        'meeting-password.enabled':
+            false, // Disable the meeting password option
+        'lobby.enabled': false, // Disable the lobby feature
+        'requireDisplayName': false, // Ensure display name is not required
+        'welcomepage.enabled': false, // Disable welcome page
+      },
+      configOverrides: {
+        'prejoinPageEnabled': false, // Ensure pre-join page is disabled
+        'lobbyEnabled': false, // Ensure lobby is disabled
+      },
     );
     try {
       _firestoreMethods.addMeetingHistory(roomname);
